@@ -1,3 +1,4 @@
+# skynet default lists
 https://iplists.firehol.org/files/bds_atif.ipset
 https://iplists.firehol.org/files/cybercrime.ipset
 https://iplists.firehol.org/files/dyndns_ponmocup.ipset
@@ -7,3 +8,12 @@ https://iplists.firehol.org/files/firehol_level2.netset
 https://iplists.firehol.org/files/firehol_level3.netset
 https://iplists.firehol.org/files/spamhaus_edrop.netset
 https://iplists.firehol.org/files/urlvir.ipset
+# enter custom lists below
+#
+# replace cybercrime w/firehol_webclient WC seems more inclusive and same makeup
+#WC also has the same makeup as dyndns_ponmocup
+#
+# https://iplists.firehol.org/files/firehol_webclient.netset
+#
+#https://iplists.firehol.org/files/firehol_webserver.netset --this one updates frequently and is large.. bad reviews, saying it blocks too much
+#
