@@ -12,6 +12,6 @@ https://iplists.firehol.org/files/urlvir.ipset
 # enter custom lists below
 #
 # https://iplists.firehol.org/files/firehol_webserver.netset --this one updates 
-# frequently and is large.. bad reviews, saying it blocks too much.  However the 
-# other list it's composed of don't update daily & cybercrime seems to be it's main list.  
+# frequently and is large.  Bad reviews, saying it blocks too much.  However the 
+# other list it's composed of don't update daily & cybercrime seems to be the main list it pulls from.  
 #
