@@ -11,3 +11,4 @@ chmod +x filtervalidator-0.7.sh
 
 sh filtervalidator.sh
 Then give the RAW github link when prompted...  
+
