@@ -1,4 +1,5 @@
 # skynet default lists
+#copied from Adamm00 10/24
 https://iplists.firehol.org/files/bds_atif.ipset
 https://iplists.firehol.org/files/cybercrime.ipset
 https://iplists.firehol.org/files/dyndns_ponmocup.ipset
