@@ -24,6 +24,7 @@ Then give the RAW github link when prompted...
 Other pages with list that interest me:
 https://github.com/stamparm/ipsum
 https://github.com/hagezi/dns-blocklists?tab=readme-ov-file#tifips --This is Hagezi's threat intelligence feed that is typically used in DNS blocking, however can also be used for IPSET blocking with some changes.  
+**Note, the above list may have so many IPs listed that you will be unable to load them on many devices.  IPSUM Level 4 and higher will work on many small home level devices from my testing.  
 
 Helpful Site to see what IPs are on what list:
 https://blocklist.sernate.com/
