@@ -7,7 +7,7 @@ To add the list to Skynet simply enter your router via SSH, type the command "Fi
 
 https://raw.githubusercontent.com/CutterSol/FirewallBL/refs/heads/main/filter.list
 
-My previous list were not much different thant the originals included with Skynet.  As I evaluate other list and find they are useful I will add those into the list.  These list aim to provide a higher level of security, while also keeping usability in mind.  Therefore they may block some sites, these issues are typically resolved quite quickly as updates are added.  I would suggest going into the Skynet firewall console to update the malware list if a problem occurs.  You can also temporarily disable skynet.  
+My previous list were not much different thant the originals included with Skynet.  As I evaluate other list and find they are useful I will add those into the list, or as an optional list.  These list aim to provide a higher level of security, while also keeping usability in mind.  Therefore they may block some sites, these issues are typically resolved quite quickly as updates are added.  I would suggest going into the Skynet firewall console to update the malware list if a problem occurs.  You can also temporarily disable skynet.  
 
 If you want to validate your list check this repo: https://github.com/ViktorJp/FilterValidator\
 
@@ -20,4 +20,11 @@ chmod +x filtervalidator-0.7.sh
 
 sh filtervalidator.sh
 Then give the RAW github link when prompted...  
+
+Other pages with list that interest me:
+https://github.com/stamparm/ipsum
+https://github.com/hagezi/dns-blocklists?tab=readme-ov-file#tifips --This is Hagezi's threat intelligence feed that is typically used in DNS blocking, however can also be used for IPSET blocking with some changes.  
+
+Helpful Site to see what IPs are on what list:
+https://blocklist.sernate.com/
 
