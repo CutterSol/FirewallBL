@@ -2,16 +2,12 @@
 # copied from Adamm00 10/24
 https://iplists.firehol.org/files/bds_atif.ipset
 https://iplists.firehol.org/files/cybercrime.ipset
-https://iplists.firehol.org/files/dyndns_ponmocup.ipset
 https://iplists.firehol.org/files/et_block.netset
 https://iplists.firehol.org/files/et_compromised.ipset
-https://iplists.firehol.org/files/firehol_level2.netset
 https://iplists.firehol.org/files/firehol_level3.netset
 https://iplists.firehol.org/files/spamhaus_edrop.netset
 https://iplists.firehol.org/files/urlvir.ipset
+https://raw.githubusercontent.com/duggytuxy/Data-Shield_IPv4_Blocklist/refs/heads/main/prod_ab_data-shield_ipv4_blocklist.txt
 # enter custom lists below
 #
-# https://iplists.firehol.org/files/firehol_webserver.netset --this one updates 
-# frequently and is large.  Bad reviews, saying it blocks too much.  However the 
-# other list it's composed of don't update daily & cybercrime seems to be the main list it pulls from.  
-#
+
