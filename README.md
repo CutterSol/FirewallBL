@@ -22,12 +22,15 @@ sh filtervalidator.sh
 Then give the RAW github link when prompted...  
 
 Other pages with list that interest me:
+
 https://github.com/stamparm/ipsum  --Provides different levels of blocking.  The more blocking, the more IPs and the larger the file.  
 https://github.com/hagezi/dns-blocklists?tab=readme-ov-file#tifips --This is Hagezi's threat intelligence feed that is typically used in DNS blocking, however can also be used for IPSET blocking with some changes.  
 **Note, the above list may have so many IPs listed that you will be unable to load them on many devices.  IPSUM Level 4 and higher will work on many small home level devices from my testing.  
 
 Helpful Site to see what IPs are on what list:
 https://blocklist.sernate.com/
+
+10/25 Added a IPSET Clone of IPSUM Level 2 TXT file.  Have not added .list file to pull this file via Merlin.  
 
 Latest change includes the Data-Shield AD list from duggytuxxy replicated daily into an ipset file:
 https://github.com/duggytuxy/Data-Shield_IPv4_Blocklist/tree/main
