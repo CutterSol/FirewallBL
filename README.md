@@ -7,10 +7,6 @@ To add the list to Skynet simply enter your router via SSH, type the command "Fi
 
 https://raw.githubusercontent.com/CutterSol/FirewallBL/refs/heads/main/filter.list
 
-As of 10/25 I've created twice daily clone of the Data-Shield txt file into ipset format and that's what the second .list file is for, if you would like to use it:
-
-https://raw.githubusercontent.com/CutterSol/FirewallBL/refs/heads/main/prod_ad_data-shield_ipv4_blocklist.ipset
-
 My previous list were not much different thant the originals included with Skynet.  As I evaluate other list and find they are useful I will add those into the list, or as an optional list.  These list aim to provide a higher level of security, while also keeping usability in mind.  Therefore they may block some sites, these issues are typically resolved quite quickly as updates are added.  I would suggest going into the Skynet firewall console to update the malware list if a problem occurs.  You can also temporarily disable skynet.  
 
 If you want to validate your list check this repo: https://github.com/ViktorJp/FilterValidator\
@@ -35,6 +31,7 @@ https://blocklist.sernate.com/
 
 Latest change includes the Data-Shield AD list from duggytuxxy replicated daily into an ipset file:
 https://github.com/duggytuxy/Data-Shield_IPv4_Blocklist/tree/main
-
-
+DO NOT USE:
+As of 10/25 I've created twice daily clone of the Data-Shield txt file into ipset format and that's what the second .list file is for, if you would like to use it:
+https://raw.githubusercontent.com/CutterSol/FirewallBL/refs/heads/main/prod_ad_data-shield_ipv4_blocklist.ipset --This file is only a portion of Data-Shield
 
