@@ -1,0 +1,70 @@
+name: Update upstream level 2 to ipset
+on:
+  schedule:
+    - cron: '0 0,12 * * *'    # runs at 00:00 and 12:00 UTC daily
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+env:
+  UPSTREAM_OWNER: stamparm
+  UPSTREAM_REPO: ipsum
+  UPSTREAM_REF: main
+  UPSTREAM_PATH: levels/2.txt
+  TARGET_FILE: levels-2.ipset
+
+jobs:
+  update-level2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Download upstream to temp file
+        run: |
+          set -euo pipefail
+          RAW_URL="https://raw.githubusercontent.com/${{ env.UPSTREAM_OWNER }}/${{ env.UPSTREAM_REPO }}/${{ env.UPSTREAM_REF }}/${{ env.UPSTREAM_PATH }}"
+          TMPFILE="$(mktemp)"
+          echo "Fetching $RAW_URL"
+          curl -fsSL "$RAW_URL" -o "$TMPFILE"
+          echo "Downloaded to $TMPFILE — size: $(stat -c%s "$TMPFILE") bytes — lines: $(wc -l < "$TMPFILE")"
+
+      - name: Compare and replace if different
+        run: |
+          set -euo pipefail
+          TMPFILE="${TMPFILE:-$(ls /tmp | awk 'NR==1{print "/tmp/"$0}' || true)}"
+          if [ ! -f "$TMPFILE" ]; then TMPFILE=$(mktemp); fi
+          TARGET="${{ env.TARGET_FILE }}"
+          if [ ! -f "$TARGET" ]; then
+            mv "$TMPFILE" "$TARGET"
+            echo "Target did not exist — moved downloaded file into place"
+          else
+            if cmp -s "$TMPFILE" "$TARGET"; then
+              echo "Downloaded file is identical to $TARGET — no update"
+              rm -f "$TMPFILE"
+              exit 0
+            else
+              mv "$TMPFILE" "$TARGET"
+              echo "Downloaded file differed — replaced $TARGET"
+            fi
+          fi
+
+      - name: Show head of target file
+        run: |
+          echo "--- head of ${{ env.TARGET_FILE }} ---"
+          head -n 8 "${{ env.TARGET_FILE }}" || true
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet --exit-code -- "${{ env.TARGET_FILE }}"; then
+            echo "No changes to commit"
+          else
+            git add "${{ env.TARGET_FILE }}"
+            git commit -m "Update level 2 ipset: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            git push origin HEAD:main
+          fi
