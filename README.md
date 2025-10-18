@@ -3,9 +3,13 @@ https://github.com/Adamm00/IPSet_ASUS/tree/master
 
 This is an ipset filter list that can be added to an Asus router running Merlin via AMTM in the Skynet app.  I initially add anything I am testing via the "fast switch" option of the Skynet settings first.  Then if you have a list you like better than the default for Skynet you can update the default Skynet list with that list.  This list is actually a lists of list, when Skynet does it's update it will check for updates to each of thse list--they are dynamic and change daily.  The list can be checked at firehol.  The lists in the file (default as of 10/24) were checked for update frequency, composition, and reviews on FireHol.  Most of them have updated within the last week, don't have a lot of complaints in their reviews, and are used in other lists to provide a signifcant portion of those lists blocks.
 
-To add the list to Skynet simply enter your router via SSH, type the command "Firewall" and select to changed the malware blocklist.  Then paste this entry in:
+To add the list to Skynet simply enter your router via SSH, type the command "Firewall" and select to change the malware blocklist.  Then paste this entry in:
 
 https://raw.githubusercontent.com/CutterSol/FirewallBL/refs/heads/main/filter.list
+
+As of 10/25 I've created twice daily clone of the Data-Shield txt file into ipset format and that's what the second .list file is for, if you would like to use it:
+
+https://raw.githubusercontent.com/CutterSol/FirewallBL/refs/heads/main/prod_ad_data-shield_ipv4_blocklist.ipset
 
 My previous list were not much different thant the originals included with Skynet.  As I evaluate other list and find they are useful I will add those into the list, or as an optional list.  These list aim to provide a higher level of security, while also keeping usability in mind.  Therefore they may block some sites, these issues are typically resolved quite quickly as updates are added.  I would suggest going into the Skynet firewall console to update the malware list if a problem occurs.  You can also temporarily disable skynet.  
 
@@ -22,7 +26,7 @@ sh filtervalidator.sh
 Then give the RAW github link when prompted...  
 
 Other pages with list that interest me:
-https://github.com/stamparm/ipsum
+https://github.com/stamparm/ipsum  --Provides different levels of blocking.  The more blocking, the more IPs and the larger the file.  
 https://github.com/hagezi/dns-blocklists?tab=readme-ov-file#tifips --This is Hagezi's threat intelligence feed that is typically used in DNS blocking, however can also be used for IPSET blocking with some changes.  
 **Note, the above list may have so many IPs listed that you will be unable to load them on many devices.  IPSUM Level 4 and higher will work on many small home level devices from my testing.  
 
