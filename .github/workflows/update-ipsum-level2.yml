@@ -10,6 +10,7 @@ permissions:
 env:
   RAW_URL: "https://raw.githubusercontent.com/stamparm/ipsum/refs/heads/master/levels/2.txt"
   TARGET_FILE: levels-2.ipset
+  TMP_PATH: /tmp/levels-2.txt
 
 jobs:
   update-level2:
@@ -20,50 +21,51 @@ jobs:
         with:
           persist-credentials: true
 
-      - name: Download upstream to temp file
+      - name: Download upstream to fixed temp path
         run: |
           set -euo pipefail
           echo "Fetching $RAW_URL"
-          TMPFILE="$(mktemp)"
-          curl -fsSL "$RAW_URL" -o "$TMPFILE"
-          echo "Downloaded to $TMPFILE — size: $(stat -c%s "$TMPFILE") bytes — lines: $(wc -l < "$TMPFILE")"
+          mkdir -p /tmp
+          curl -fsSL "$RAW_URL" -o "$TMP_PATH"
+          echo "Downloaded to $TMP_PATH — size: $(stat -c%s "$TMP_PATH") bytes — lines: $(wc -l < "$TMP_PATH")"
 
       - name: Compare and replace if different
         run: |
           set -euo pipefail
-          # TMPFILE is created in previous step
-          if [ ! -f "$TMPFILE" ]; then
-            echo "Temp file missing, aborting" >&2
+          TARGET="${{ env.TARGET_FILE }}"
+          TMP="${{ env.TMP_PATH }}"
+          if [ ! -f "$TMP" ]; then
+            echo "Temp file $TMP missing, aborting" >&2
             exit 1
           fi
-          TARGET="${TARGET_FILE}"
           if [ ! -f "$TARGET" ]; then
-            mv "$TMPFILE" "$TARGET"
+            mv "$TMP" "$TARGET"
             echo "Target did not exist — moved downloaded file into place"
           else
-            if cmp -s "$TMPFILE" "$TARGET"; then
+            if cmp -s "$TMP" "$TARGET"; then
               echo "Downloaded file is identical to $TARGET — no update"
-              rm -f "$TMPFILE"
+              rm -f "$TMP"
               exit 0
             else
-              mv "$TMPFILE" "$TARGET"
+              mv "$TMP" "$TARGET"
               echo "Downloaded file differed — replaced $TARGET"
             fi
           fi
 
       - name: Show head of target file
         run: |
-          echo "--- head of $TARGET_FILE ---"
-          head -n 8 "$TARGET_FILE" || true
+          echo "--- head of ${{ env.TARGET_FILE }} ---"
+          head -n 8 "${{ env.TARGET_FILE }}" || true
 
       - name: Commit and push if changed
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if git diff --quiet --exit-code -- "$TARGET_FILE"; then
+          if git diff --quiet --exit-code -- "${{ env.TARGET_FILE }}"; then
             echo "No changes to commit"
           else
-            git add "$TARGET_FILE"
+            git add "${{ env.TARGET_FILE }}"
             git commit -m "Update level 2 ipset: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
             git push origin HEAD:main
           fi
