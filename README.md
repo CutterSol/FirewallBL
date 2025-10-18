@@ -29,3 +29,8 @@ https://github.com/hagezi/dns-blocklists?tab=readme-ov-file#tifips --This is Hag
 Helpful Site to see what IPs are on what list:
 https://blocklist.sernate.com/
 
+Latest change includes the Data-Shield AD list from duggytuxxy replicated daily into an ipset file:
+https://github.com/duggytuxy/Data-Shield_IPv4_Blocklist/tree/main
+
+
+
