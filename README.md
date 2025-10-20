@@ -30,11 +30,4 @@ https://github.com/hagezi/dns-blocklists?tab=readme-ov-file#tifips --This is Hag
 Helpful Site to see what IPs are on what list:
 https://blocklist.sernate.com/
 
-10/25 Added a IPSET Clone of IPSUM Level 2 TXT file.  Have not added .list file to pull this file via Merlin.  
-
-Latest change includes the Data-Shield AD list from duggytuxxy replicated daily into an ipset file:
-https://github.com/duggytuxy/Data-Shield_IPv4_Blocklist/tree/main
-DO NOT USE:
-As of 10/25 I've created twice daily clone of the Data-Shield txt file into ipset format and that's what the second .list file is for, if you would like to use it:
-https://raw.githubusercontent.com/CutterSol/FirewallBL/refs/heads/main/prod_ad_data-shield_ipv4_blocklist.ipset --This file is only a portion of Data-Shield
-
+10/25 Added a IPSET Clone of IPSUM Level 2 TXT file along with .list file to for Skynet switching and/or malware list.  This list monitors multiple list and if an IP address appears on 2 or more list then it's added to this list.  
