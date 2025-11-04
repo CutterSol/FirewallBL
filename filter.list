@@ -1,5 +1,6 @@
 # skynet default lists
 # copied from Adamm00 10/24
+# & modified 11/25 checking current list for update frequency and staleness
 https://iplists.firehol.org/files/bds_atif.ipset
 https://iplists.firehol.org/files/cybercrime.ipset
 https://iplists.firehol.org/files/et_block.netset
