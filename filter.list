@@ -7,7 +7,7 @@ https://iplists.firehol.org/files/et_compromised.ipset
 https://iplists.firehol.org/files/firehol_level3.netset
 https://iplists.firehol.org/files/spamhaus_edrop.netset
 https://iplists.firehol.org/files/urlvir.ipset
-https://raw.githubusercontent.com/CutterSol/FirewallBL/refs/heads/main/prod_ad_data-shield_ipv4_blocklist.ipset
+https://raw.githubusercontent.com/CutterSol/FirewallBL/refs/heads/main/levels-2.ipset
 # enter custom lists below
 #
 
